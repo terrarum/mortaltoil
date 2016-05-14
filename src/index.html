@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="mortaltoil.css">
+</head>
+<body>
+
+<div class="details js-details is-active">
+  <h2>Details</h2>
+
+  <p>Enter your date of birth.</p>
+
+  <form action="" class="details__form js-form">
+    <label for="details__day">Day</label>
+    <input id="details__day" type="number" name="day" min="1" max="31" class="details__day js-day" value="22">
+    <label for="details__month">Month</label>
+    <input id="details__month" type="number" name="month" min="1" max="12" class="details__month js-month" value="09">
+    <label for="details__year">Year</label>
+    <input id="details__year" type="number" name="year" min="1800" max="2016" class="details__year js-year" value="1986">
+    <label for="details__expectancy">Life Expectancy</label>
+    <input id="details__expectancy" type="number" name="details__expectancy" min="0" max="150" class="details__expectancy js-expectancy" value="89">
+    <button type="submit">Submit</button>
+  </form>
+
+</div>
+
+<div class="result js-result">
+  <h2>Result</h2>
+  <canvas id="js-canvas" class="canvas js-canvas"></canvas>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+.details, .result {
+    display: none;
+
+    &.is-active {
+        display: block;
+    }
+}
+
+.canvas {
+  border: 1px solid black;
+}
