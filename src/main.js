@@ -1,6 +1,7 @@
 require('./main.scss');
 
 import tableRenderer from './modules/tableRenderer';
+import graphRenderer from './modules/graphRenderer';
 
 const WEEKS_IN_YEAR = 52,
   MS_IN_WEEK = 604800000;
@@ -34,7 +35,17 @@ const weeksSinceDate = function weeksSinceDate(year, month, day) {
   dateStart = new Date(year + '-' + month + '-' + day);
   dateCurrent = new Date();
   dateDiff = dateCurrent - dateStart;
-  return dateDiff / MS_IN_WEEK;
+  return Math.floor(dateDiff / MS_IN_WEEK);
+};
+
+let weeks = [],
+  currentEpoch;
+
+const weekModel = function weekModel(id, epoch) {
+  return {
+    id: id,
+    epoch: epoch // past, present, future
+  }
 };
 
 const buildTable = function buildTable() {
@@ -44,7 +55,24 @@ const buildTable = function buildTable() {
   // Number of weeks since birth.
   weeksLived = weeksSinceDate(year, month, day);
 
-  tableRenderer.render(canvas, weeksLived, expectancyWeeks);
+  for (let i = 0; i < expectancyWeeks; i++) {
+
+    if (i < weeksLived) {
+      currentEpoch = 'past';
+    }
+    else if (i == weeksLived) {
+      currentEpoch = 'present';
+    }
+    else {
+      currentEpoch = 'future'
+    }
+
+    weeks.push(weekModel(i, currentEpoch));
+  }
+
+  graphRenderer.render(weeks);
+  // tableRenderer.render(canvas, weeksLived, expectancyWeeks);
+
   pageDetails.classList.remove('is-active');
   pageResult.classList.add('is-active');
 };

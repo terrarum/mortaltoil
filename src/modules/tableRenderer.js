@@ -22,7 +22,7 @@ const render = function init(canvas, weeksLived, weeksTotal) {
   // Calculate correct number of rows.
   years = weeksTotal / WEEKS_IN_YEAR;
   rowsRemainder = weeksTotal % WEEKS_IN_YEAR;
-  
+
   // Rounds rows up if life expectancy is not a whole number.
   years = Math.ceil(years);
 
@@ -37,14 +37,14 @@ const render = function init(canvas, weeksLived, weeksTotal) {
   ctx.beginPath();
   ctx.fillStyle = WEEK_LIVED;
   for (let year = 0; year < years; year++) {
-    
+
     // If the final year is not a full year, give it the correct number of weeks.
     if (year === years - 1) {
       if (rowsRemainder !== 0) {
         weeks = rowsRemainder;
       }
     }
-    
+
     for (let week = 0; week < weeks; week++) {
 
       // If we've drawn the number of weeks that the user has lived, change the style.

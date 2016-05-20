@@ -6,6 +6,18 @@
     }
 }
 
-.canvas {
+.canvas, svg {
   border: 1px solid black;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path {
+  fill: none;
+}
+
+.axis line {
+  stroke: #000;
 }
